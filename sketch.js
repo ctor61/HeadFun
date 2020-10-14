@@ -16,8 +16,6 @@ function setup() {
     createCanvas(w, h);
     frameRate(fps);
 	angleMode(DEGREES);
-
-	sound.play();
 }
 
 function preload() {
@@ -130,6 +128,8 @@ function spinAll(frame)  {
 
 
 function mousePressed() {
+	sound.play();
+	
 	let fs = fullscreen();
 	fullscreen(!fs);	
 }
