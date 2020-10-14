@@ -128,11 +128,17 @@ function spinAll(frame)  {
 
 
 function mousePressed() {
-	sound.play();
-	
+	if (!sound.isPlaying()) {
+		sound.play();
+	}
+
 	let fs = fullscreen();
 	fullscreen(!fs);	
+
+	started = true;
 }
+
+let started = false;
 
 let scenes = [{ f: spin, d: 2 }, { f: move, d: 2 }, { f: shakeAll, d: 2 }, { f: spinAll, d: 6 }];
 
@@ -140,7 +146,16 @@ let sceneIndex = 0;
 let t = 0;
 
 function draw() {
-    background('black');
+	background('black');
+	
+	if (!started) {
+		fill('white');
+		textSize(30);
+		textAlign(CENTER);
+		text('Turn on audio! And click to start...', windowWidth / 2, windowHeight / 2);
+
+		return;
+	}
 
 	if (t >= scenes[sceneIndex].d * fps) {
 		sceneIndex = Math.min(scenes.length - 1, sceneIndex + 1);
