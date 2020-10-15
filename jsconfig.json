@@ -2,5 +2,5 @@
     "compilerOptions": {
       "checkJs": true
     },    
-    "include": ["lib/**/*", "sketch.js"]
+    "include": ["lib/**/*", "sketch3.js"]
   }
